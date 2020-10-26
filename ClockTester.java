@@ -40,7 +40,7 @@ public class ClockTester{
 		frame.setTitle("Clock Animation - Part 2");
 		frame.setLayout(new BorderLayout());
 		frame.add(label,BorderLayout.NORTH); //include clock
-		//frame.add(buttonPanel,BorderLayout.SOUTH); //include button panel
+		frame.add(buttonPanel,BorderLayout.SOUTH); //include button panel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
