@@ -17,7 +17,7 @@ public class ClockTester{
 		label.setBackground(Color.blue);
 		label.setOpaque(true);
 
-/*
+
 		final JPanel buttonPanel = new JPanel();
 		buttonPanel.setBackground(Color.lightGray);
 
@@ -34,7 +34,7 @@ public class ClockTester{
 
 		JButton resetTime = new JButton("Reset");
 		buttonPanel.add(resetTime);
-*/
+
 
 		JFrame frame = new JFrame();
 		frame.setTitle("Clock Animation - Part 2");
