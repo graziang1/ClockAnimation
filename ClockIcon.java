@@ -45,7 +45,7 @@ public class ClockIcon implements Moveable{
 		int delx = dx;    //horizontal increment or decrement
 		int dely = dy;    //vertical displacement
 
-		count = count + 1; //seconds count
+		count = count + 1; //increment seconds count
 		theta = theta + (Math.PI/30); //rotate seconds to the next mark
 
 		if(count%60 == 0){

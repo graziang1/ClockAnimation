@@ -21,20 +21,67 @@ public class ClockTester{
 		final JPanel buttonPanel = new JPanel();
 		buttonPanel.setBackground(Color.lightGray);
 
-		JTextField enterHrs = new JTextField("Enter hour", 10);
+		JTextField enterHrs = new JTextField("Enter starting hour", 12);
 		enterHrs.setBackground(Color.yellow);
 		buttonPanel.add(enterHrs);
 
-		JTextField enterMins = new JTextField("Enter minute", 10);
+		JTextField enterMins = new JTextField("Enter starting minute", 12);
 		enterMins.setBackground(Color.yellow);
 		buttonPanel.add(enterMins);
 
+
+		final int DELAY = 1000; //1 tick per second, or 1000ms between timer ticks
+		Timer t = new Timer(DELAY, new ActionListener(){ //define the timer event handler
+			public void actionPerformed(ActionEvent event){
+				shape.translate(1,0);    //update motion
+				label.repaint();    //repaint image
+		   }
+		});
+
+		// t.addActionListener(listenerHours);
+		// t.addActionListener(listenerMinutes);
+		// t.addActionListener(listenerSeconds);
+
+
 		JButton setTime = new JButton("Set");
 		buttonPanel.add(setTime);
+		setTime.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent event){
+					t.stop(); //temporarily stop timer
+					String hh = enterHrs.getText();
+					String mm = enterMins.getText();
+					try {
+						int h = Integer.parseInt(hh);
+						shape.setH(h);	//set hours hand to inputted hour
+						int m = Integer.parseInt(mm);
+						shape.setM(m);	//set minutes hand to inputted minute
+					} catch (NumberFormatException exception){
+						System.out.println("This is not a valid time");
+					}
+					shape.setC(0);	//set seconds hand to 0
+					enterHrs.setText("Enter starting hour");
+					enterMins.setText("Enter starting minute");
+					t.start();
+				}
+			}
+		);
 
 		JButton resetTime = new JButton("Reset");
 		buttonPanel.add(resetTime);
-
+		resetTime.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent event){
+					t.stop(); //temporarily stop timer
+					shape.setH(12); //reset time to 12:00
+					shape.setM(0);
+					shape.setC(0);
+					enterHrs.setText("Enter starting hour");
+					enterMins.setText("Enter starting minute");
+					t.start(); //start timer
+				}
+			}
+		);
 
 		JFrame frame = new JFrame();
 		frame.setTitle("Clock Animation - Part 2");
@@ -44,15 +91,5 @@ public class ClockTester{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
-
-
-		final int DELAY = 1000; //1 tick per second, or 1000ms per second
-		Timer t = new Timer(DELAY, new ActionListener(){ //define the event handler
-			public void actionPerformed(ActionEvent event){
-				shape.translate(1,0);    //update motion
-				label.repaint();    //repaint image
-		   }
-		});
-		t.start();    //start timer	
 	}
 }
