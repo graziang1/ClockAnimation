@@ -8,8 +8,8 @@ import java.awt.geom.*;
 //Describes the clock
 public class ClockIcon implements Moveable{
 	//private class variables
-	private int xx;
-	private int yy;
+	private int x;
+	private int y;
 	private int width;
 	private int h; //hours
 	private int m; //minutes
@@ -19,9 +19,9 @@ public class ClockIcon implements Moveable{
 	private double gamma = -(Math.PI)/2; //angle of rotation for hour hand
 
 	//constructor
-	public ClockIcon(int x, int y, int w, int hr, int min, int c){
-		xx = x;
-		yy = w;
+	public ClockIcon(int xx, int yy, int w, int hr, int min, int c){
+		x = xx;
+		y = yy;
 		width = w;
 		h = hr;
 		m = min;
@@ -30,20 +30,20 @@ public class ClockIcon implements Moveable{
 
 	//set methods
 	public void setH(int hour){
-		h = hour;
+		h = hour; //set hour
 	}
 	public void setM(int min){
-		m = min;
+		m = min; //set minute
 	}
 	public void setC(int c){
-		count = c;
+		count = c; //set second
 	}
 
 	/*implementation of Moveable interface*/
 	//rotation of the clock hands
 	public void translate(int dx, int dy){
-		int delx = dx;    //horizontal increment or decrement
-		int dely = dy;    //vertical displacement
+		x = dx;    //horizontal increment or decrement
+		y = dy;    //vertical displacement
 
 		count = count + 1; //increment seconds count
 		theta = theta + (Math.PI/30); //rotate seconds to the next mark

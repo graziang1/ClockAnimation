@@ -3,7 +3,6 @@
 	Clock Assignment Part 1
 */
 import java.awt.*;
-//import java.util.*;
 import javax.swing.*;
 public class ShapeIcon implements Icon {
 	private int width;
@@ -16,12 +15,15 @@ public class ShapeIcon implements Icon {
 		height = h;
 	}
 
+	@Override
 	public int getIconWidth(){
 		return width;
 	}
+	@Override
 	public int getIconHeight(){
 		return height;
 	}
+	@Override
 	public void paintIcon(Component c, Graphics g, int x, int y){
 		Graphics2D g2 = (Graphics2D)g;
 		shape.draw(g2);

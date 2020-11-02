@@ -42,7 +42,6 @@ public class ClockTester{
 		// t.addActionListener(listenerMinutes);
 		// t.addActionListener(listenerSeconds);
 
-
 		JButton setTime = new JButton("Set");
 		buttonPanel.add(setTime);
 		setTime.addActionListener(new ActionListener() 
@@ -56,6 +55,7 @@ public class ClockTester{
 						shape.setH(h);	//set hours hand to inputted hour
 						int m = Integer.parseInt(mm);
 						shape.setM(m);	//set minutes hand to inputted minute
+						label.repaint(); //repaint clock hands
 					} catch (NumberFormatException exception){
 						System.out.println("This is not a valid time");
 					}
@@ -73,9 +73,10 @@ public class ClockTester{
 			{
 				public void actionPerformed(ActionEvent event){
 					t.stop(); //temporarily stop timer
-					shape.setH(12); //reset time to 12:00
+					shape.setH(0); //reset time to 12:00
 					shape.setM(0);
 					shape.setC(0);
+					label.repaint(); //repaint clock hands
 					enterHrs.setText("Enter starting hour");
 					enterMins.setText("Enter starting minute");
 					t.start(); //start timer
