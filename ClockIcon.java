@@ -114,7 +114,7 @@ public class ClockIcon implements Moveable{
 			else { //second/min marks
 				x = 2;
 				Ellipse2D.Double sec = new Ellipse2D.Double(300+170*Math.cos(i*(Math.PI/30))-x, 300+170*Math.sin(i*(Math.PI / 30))-x, 4, 4);
-				g2.setColor(Color.black);
+				g2.setColor(randC);
 				g2.fill(sec);
 				g2.draw(sec);
 			}
