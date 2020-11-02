@@ -42,17 +42,22 @@ public class ClockIcon implements Moveable{
 	/*implementation of Moveable interface*/
 	//rotation of the clock hands
 	public void translate(int dx, int dy){
-		x = dx;    //horizontal increment or decrement
-		y = dy;    //vertical displacement
+		int delx = dx;    //horizontal increment or decrement
+		int dely = dy;    //vertical displacement
 
 		count = count + 1; //increment seconds count
 		theta = theta + (Math.PI/30); //rotate seconds to the next mark
-
 		if(count%60 == 0){
 			alpha = alpha + (Math.PI/30); //rotate minutes to the next mark
 		}
 		if(count%720 == 0){
 			gamma = gamma + (Math.PI/30); //rotate hours to the next mark
+		}
+
+		if(count == 0){
+			theta = -(Math.PI)/2;
+			alpha = -((Math.PI)/2) + m * ((Math.PI)/30);
+			gamma = -((Math.PI)/2) + h * -((Math.PI)/6);
 		}
 	}
 
@@ -66,14 +71,14 @@ public class ClockIcon implements Moveable{
 		//end of the hour hand
 		Point2D.Double endHour = new Point2D.Double(300+138*Math.cos(gamma), 300+138*Math.sin(gamma));
 		
-        //random color generator for second hand
+        //random color generator for second hand & minute marks
         Random rand = new Random();
         int red = rand.nextInt(256);
         int green = rand.nextInt(256);
         int blue = rand.nextInt(256);
         Color randC = new Color(red, green, blue);
 
-		//paint hour hand, which is the 2nd longest
+		//paint hour hand, which is the middle length
 		g2.setColor(Color.pink); 
 		g2.setStroke(new BasicStroke(7));
 		Shape hours = new Line2D.Double(origin, endHour);

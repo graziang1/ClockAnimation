@@ -1,6 +1,6 @@
 /*
 	Gianna Graziano
-	Clock Assignment Part 1
+	Clock Assignment Part 2
 */
 import java.awt.*;
 import javax.swing.*;
