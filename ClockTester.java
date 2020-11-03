@@ -52,14 +52,12 @@ public class ClockTester{
 					String mm = enterMins.getText();
 					try {
 						int h = Integer.parseInt(hh);
-						shape.setH(h);	//set hours hand to inputted hour
 						int m = Integer.parseInt(mm);
-						shape.setM(m);	//set minutes hand to inputted minute
+						shape.translate(h,m); //rotate hands to inputted minute & hour
 						label.repaint(); //repaint clock hands
 					} catch (NumberFormatException exception){
-						System.out.println("This is not a valid time");
+					System.out.println("This is not a valid time");
 					}
-					shape.setC(0);	//set seconds hand to 0
 					enterHrs.setText("Enter starting hour");
 					enterMins.setText("Enter starting minute");
 					t.start();

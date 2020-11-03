@@ -42,22 +42,23 @@ public class ClockIcon implements Moveable{
 	/*implementation of Moveable interface*/
 	//rotation of the clock hands
 	public void translate(int dx, int dy){
-		int delx = dx;    //horizontal increment or decrement
-		int dely = dy;    //vertical displacement
+		if(count == 0) {
+			theta = theta + (Math.PI/30); //seconds start at 0
+			alpha = -(Math.PI/2) + (dy * Math.PI/30); //rotate minutes
+			gamma = -(Math.PI/2) + (dx * Math.PI/6); //rotate hours
 
-		count = count + 1; //increment seconds count
-		theta = theta + (Math.PI/30); //rotate seconds to the next mark
-		if(count%60 == 0){
-			alpha = alpha + (Math.PI/30); //rotate minutes to the next mark
-		}
-		if(count%720 == 0){
-			gamma = gamma + (Math.PI/30); //rotate hours to the next mark
-		}
+			count = ((dx*60*60) + (dy*60));
+		} 
 
-		if(count == 0){
-			theta = -(Math.PI)/2;
-			alpha = -((Math.PI)/2) + m * ((Math.PI)/30);
-			gamma = -((Math.PI)/2) + h * -((Math.PI)/6);
+		else { 
+			count = count + 1; //increment seconds count
+			theta = theta + (Math.PI/30); //rotate seconds to the next mark
+			if(count%60 == 0){
+				alpha = alpha + (Math.PI/30); //rotate minutes to the next mark
+			}
+			if(count%720 == 0){
+				gamma = gamma + (Math.PI/30); //rotate hours to the next mark
+			}
 		}
 	}
 
