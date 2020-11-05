@@ -50,6 +50,9 @@ public class ClockTester{
 					try {
 						int h = Integer.parseInt(hh);
 						int m = Integer.parseInt(mm);
+						shape.setC(0);
+						shape.setH(h);
+						shape.setM(m);
 						shape.translate(h,m); //rotate hands to inputted minute & hour
 						label.repaint(); //repaint clock hands
 						t.start();
@@ -71,6 +74,7 @@ public class ClockTester{
 					shape.setH(0); //reset time to 12:00
 					shape.setM(0);
 					shape.setC(0);
+					shape.translate(0,0);
 					label.repaint(); //repaint clock hands
 					enterHrs.setText("Enter starting hour");
 					enterMins.setText("Enter starting minute");
