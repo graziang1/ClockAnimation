@@ -38,9 +38,6 @@ public class ClockTester{
 		   }
 		});
 
-		// t.addActionListener(listenerHours);
-		// t.addActionListener(listenerMinutes);
-		// t.addActionListener(listenerSeconds);
 
 		JButton setTime = new JButton("Set");
 		buttonPanel.add(setTime);
@@ -55,12 +52,12 @@ public class ClockTester{
 						int m = Integer.parseInt(mm);
 						shape.translate(h,m); //rotate hands to inputted minute & hour
 						label.repaint(); //repaint clock hands
+						t.start();
 					} catch (NumberFormatException exception){
 					System.out.println("This is not a valid time");
 					}
 					enterHrs.setText("Enter starting hour");
 					enterMins.setText("Enter starting minute");
-					t.start();
 				}
 			}
 		);
